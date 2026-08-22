@@ -2,6 +2,12 @@ const menu = document.querySelector('.menu');
 const navLinks = document.querySelector('.nav-links');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const closeMenu = () => {
+  menu?.setAttribute('aria-expanded', 'false');
+  menu?.setAttribute('aria-label', 'Open navigation');
+  navLinks?.classList.remove('mobile-open');
+};
+
 menu?.addEventListener('click', () => {
   const open = menu.getAttribute('aria-expanded') === 'true';
   menu.setAttribute('aria-expanded', String(!open));
@@ -10,11 +16,15 @@ menu?.addEventListener('click', () => {
 });
 
 document.querySelectorAll('.nav-links a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menu?.setAttribute('aria-expanded', 'false');
-    menu?.setAttribute('aria-label', 'Open navigation');
-    navLinks?.classList.remove('mobile-open');
-  });
+  link.addEventListener('click', closeMenu);
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMenu();
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 800) closeMenu();
 });
 
 const phrases = [
