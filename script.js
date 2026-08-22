@@ -14,6 +14,26 @@ document.querySelectorAll('.nav-links a').forEach((link) => {
   });
 });
 
+const phrases = [
+  'security engineering',
+  'security tooling',
+  'security automation',
+  'AI × security'
+];
+const focusOutput = document.querySelector('[data-focus-output]');
+let phraseIndex = 0;
+
+if (focusOutput) {
+  setInterval(() => {
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    focusOutput.classList.add('swap');
+    setTimeout(() => {
+      focusOutput.textContent = phrases[phraseIndex];
+      focusOutput.classList.remove('swap');
+    }, 180);
+  }, 2600);
+}
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
