@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alwinriyas.dev/sitemap.xml
