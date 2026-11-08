@@ -31,7 +31,7 @@ const phrases = [
   'security engineering',
   'security tooling',
   'security automation',
-  'AI × security'
+  'web security'
 ];
 const focusOutput = document.querySelector('[data-focus-output]');
 let phraseIndex = 0;
